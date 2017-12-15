@@ -40,10 +40,10 @@ public class DepartmentsActivity extends AppCompatActivity {
             }
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                int name= (int) viewHolder.itemView.getTag();
+                int id= (int) viewHolder.itemView.getTag();
                 int tasksDeleted = mDb.delete(SystemContract.DepartmentsEntry.TABLE_NAME,
                         SystemContract.DepartmentsEntry.DEPARTMENT_NO+"=?",
-                        new String[]{String.valueOf(name)});
+                        new String[]{String.valueOf(id)});
                 updateUi();
             }
         }).attachToRecyclerView(mBinding.rvDList);

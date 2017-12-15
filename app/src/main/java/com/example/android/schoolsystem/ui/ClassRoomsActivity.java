@@ -42,8 +42,10 @@ public class ClassRoomsActivity extends AppCompatActivity {
             }
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
-                String name= (String) viewHolder.itemView.getTag();
-                int tasksDeleted = mDb.delete(ClassRoomsEntry.TABLE_NAME, ClassRoomsEntry.COL_ROOM_NAME+"=?", new String[]{name});
+                int id= (int) viewHolder.itemView.getTag();
+                int tasksDeleted = mDb.delete(ClassRoomsEntry.TABLE_NAME,
+                        ClassRoomsEntry._ID+"=?",
+                        new String[]{String.valueOf(id)});
                 updateUi();
             }
         }).attachToRecyclerView(mBinding.rvCrList);

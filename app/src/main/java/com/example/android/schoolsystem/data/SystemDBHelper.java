@@ -35,18 +35,16 @@ public class SystemDBHelper extends SQLiteOpenHelper {
 
         String SQLQuery3="CREATE TABLE " + SystemContract.LevelsEntry.TABLE_NAME+" ("+
                 SystemContract.LevelsEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                SystemContract.LevelsEntry.COL_Name+" TEXT UNIQUE, "+
+                SystemContract.LevelsEntry.COL_NAME +" TEXT UNIQUE, "+
                 SystemContract.LevelsEntry.COL_DES+" TEXT );"
                 ;
         db.execSQL(SQLQuery3);
 
         String SQLQuery4 ="CREATE TABLE " +SystemContract.CoursesEntry.TABLE_NAME +" ("+
                 SystemContract.CoursesEntry.COL_ID+" INTEGER PRIMARY KEY, "+
-                SystemContract.CoursesEntry.COL_Name+" TEXT, "+
-                SystemContract.CoursesEntry.COL_LVL_ID+"INTEGER REFERENCES "+
-                SystemContract.LevelsEntry.TABLE_NAME+"("+SystemContract.LevelsEntry.COL_ID+"), "+
-                SystemContract.CoursesEntry.COL_CLASS_ID+"INTEGER REFERENCES "+
-                SystemContract.ClassRoomsEntry.TABLE_NAME+"("+SystemContract.CoursesEntry._ID+"));"
+                SystemContract.CoursesEntry.COL_NAME +" TEXT, "+
+                SystemContract.CoursesEntry.COL_LVL_ID+" INTEGER , "+
+                SystemContract.CoursesEntry.COL_CLASS_ID+" INTEGER );"
                 ;
         db.execSQL(SQLQuery4);
 
@@ -58,10 +56,10 @@ public class SystemDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQLQuery);
         String SQLQuery2="DROP TABLE IF EXISTS " + SystemContract.DepartmentsEntry.TABLE_NAME ;
         db.execSQL(SQLQuery2);
-        String SQLQuery3="DROP TABLE IF EXISTS " + SystemContract.CoursesEntry.TABLE_NAME ;
-        db.execSQL(SQLQuery3);
         String SQLQuery4="DROP TABLE IF EXISTS " + SystemContract.LevelsEntry.TABLE_NAME ;
         db.execSQL(SQLQuery4);
+        String SQLQuery3="DROP TABLE IF EXISTS " + SystemContract.CoursesEntry.TABLE_NAME ;
+        db.execSQL(SQLQuery3);
         onCreate(db);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.android.schoolsystem.ui;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,8 +32,9 @@ public class AddCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_course);
         mBinding= DataBindingUtil.setContentView(this,R.layout.activity_add_course);
+        classPosition=0;
         SystemDBHelper helper = new SystemDBHelper(this);
-        mDb = helper.getReadableDatabase();
+        mDb = helper.getWritableDatabase();
         cursor = mDb.query(SystemContract.ClassRoomsEntry.TABLE_NAME,null,null,
                 null,null,null,null);
 
@@ -68,6 +70,35 @@ public class AddCourseActivity extends AppCompatActivity {
     }
 
     public void add(View view) {
-
+        String name = mBinding.etCName.getText().toString();
+        String lvlName = mBinding.etLName.getText().toString();
+        String lvlDes = mBinding.etLDes.getText().toString();
+        String tmp = mBinding.etCNo.getText().toString();
+        if(name.equals("")||tmp.equals(""))
+            Toast.makeText(this,"Check Your Inputs",Toast.LENGTH_SHORT).show();
+        else {
+            int no = Integer.parseInt(tmp);
+            ContentValues cv = new ContentValues();
+            cv.put(SystemContract.LevelsEntry.COL_NAME, lvlName);
+            cv.put(SystemContract.LevelsEntry.COL_DES, lvlDes);
+            mDb.insert(SystemContract.LevelsEntry.TABLE_NAME, null, cv);
+            Cursor c = mDb.query(SystemContract.LevelsEntry.TABLE_NAME,null,
+                    SystemContract.LevelsEntry.COL_NAME+"=?",
+                    new String[]{lvlName} ,null,null,null);
+            c.moveToFirst();
+            int index=c.getColumnIndex(SystemContract.LevelsEntry._ID);
+            int lvlId =c.getInt(index);
+            c.close();
+            cursor.moveToPosition(classPosition);
+            int classId =cursor.getInt(cursor.getColumnIndex(SystemContract.ClassRoomsEntry._ID));
+            cv = new ContentValues();
+            cv.put(SystemContract.CoursesEntry.COL_NAME, name);
+            cv.put(SystemContract.CoursesEntry.COL_LVL_ID, lvlId);
+            cv.put(SystemContract.CoursesEntry.COL_CLASS_ID,classId);
+            cv.put(SystemContract.CoursesEntry.COL_ID,no);
+            Long l= mDb.insert(SystemContract.CoursesEntry.TABLE_NAME, null, cv);
+            cursor.close();
+            finish();
+        }
     }
 }

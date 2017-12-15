@@ -34,7 +34,7 @@ public class ClassRoomsListAdapter extends RecyclerView.Adapter<ClassRoomsListAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         mClassRooms.moveToPosition(position);
-        holder.itemView.setTag(mClassRooms.getString(mClassRooms.getColumnIndex(ClassRoomsEntry.COL_ROOM_NAME)));
+        holder.itemView.setTag(mClassRooms.getInt(mClassRooms.getColumnIndex(ClassRoomsEntry._ID)));
         holder.bind(position);
     }
 

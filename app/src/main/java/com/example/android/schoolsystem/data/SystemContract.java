@@ -23,14 +23,13 @@ public class SystemContract {
     public static class CoursesEntry implements BaseColumns {
         public static final String TABLE_NAME="courses";
         public static final String COL_ID="id";
-        public static final String COL_Name="name";
+        public static final String COL_NAME ="name";
         public static final String COL_LVL_ID="lvl_id";
         public static final String COL_CLASS_ID="class_id";
     }
     public static class LevelsEntry implements BaseColumns {
         public static final String TABLE_NAME="levels";
-        public static final String COL_ID="id";
-        public static final String COL_Name="name";
+        public static final String COL_NAME ="name";
         public static final String COL_DES="description";
     }
 
