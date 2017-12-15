@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">School System</string>
+    <string name="action_settings">Settings</string>
+    <string name="class_rooms">class rooms</string>
+    <string name="departments">departments</string>
+    <string name="students">students</string>
+    <string name="nothing_to_show">Nothing to show</string>
+    <string name="add">add</string>
+    <string name="name">Name</string>
+    <string name="capacity">Capacity</string>
+    <string name="number">Number</string>
+    <string name="no">NO.</string>
+    <string name="level_name">Level Name</string>
+    <string name="class_room">Class Room</string>
+    <string name="level_description">Level Description</string>
+    <string name="description">Description</string>
+    <string name="courses">courses</string>
+</resources>
