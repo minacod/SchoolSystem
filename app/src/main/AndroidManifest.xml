@@ -25,7 +25,9 @@
         <activity android:name=".ui.DepartmentsActivity" />
         <activity android:name=".ui.AddDepartmentActivity" />
         <activity android:name=".ui.CoursesActivity" />
-        <activity android:name=".ui.AddCourseActivity"></activity>
+        <activity android:name=".ui.AddCourseActivity" />
+        <activity android:name=".ui.StudentsActivity" />
+        <activity android:name=".ui.AddStudentActivity"></activity>
     </application>
 
 </manifest>

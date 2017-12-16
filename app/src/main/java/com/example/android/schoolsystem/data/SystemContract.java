@@ -32,6 +32,13 @@ public class SystemContract {
         public static final String COL_NAME ="name";
         public static final String COL_DES="description";
     }
+    public static class StudentsEntry implements BaseColumns {
+        public static final String TABLE_NAME="student";
+        public static final String COL_NAME ="name";
+        public static final String COL_DOB="dob";
+        public static final String COL_ADDRESS ="address";
+        public static final String COL_EMAIL="email";
+    }
 
 
 }

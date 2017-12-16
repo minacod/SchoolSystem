@@ -41,12 +41,21 @@ public class SystemDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQLQuery3);
 
         String SQLQuery4 ="CREATE TABLE " +SystemContract.CoursesEntry.TABLE_NAME +" ("+
-                SystemContract.CoursesEntry.COL_ID+" INTEGER PRIMARY KEY, "+
+                SystemContract.CoursesEntry.COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
                 SystemContract.CoursesEntry.COL_NAME +" TEXT, "+
                 SystemContract.CoursesEntry.COL_LVL_ID+" INTEGER , "+
                 SystemContract.CoursesEntry.COL_CLASS_ID+" INTEGER );"
                 ;
         db.execSQL(SQLQuery4);
+
+        String SQLQuery5 ="CREATE TABLE " +SystemContract.StudentsEntry.TABLE_NAME +" ("+
+                SystemContract.StudentsEntry._ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
+                SystemContract.StudentsEntry.COL_NAME +" TEXT, "+
+                SystemContract.StudentsEntry.COL_ADDRESS+" TEXT , "+
+                SystemContract.StudentsEntry.COL_DOB+" TEXT , "+
+                SystemContract.StudentsEntry.COL_EMAIL+" TEXT );"
+                ;
+        db.execSQL(SQLQuery5);
 
     }
 
@@ -60,6 +69,8 @@ public class SystemDBHelper extends SQLiteOpenHelper {
         db.execSQL(SQLQuery4);
         String SQLQuery3="DROP TABLE IF EXISTS " + SystemContract.CoursesEntry.TABLE_NAME ;
         db.execSQL(SQLQuery3);
+        String SQLQuery5="DROP TABLE IF EXISTS " + SystemContract.StudentsEntry.TABLE_NAME ;
+        db.execSQL(SQLQuery5);
         onCreate(db);
     }
 }
